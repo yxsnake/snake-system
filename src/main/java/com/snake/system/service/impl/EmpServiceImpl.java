@@ -48,15 +48,15 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class EmpServiceImpl extends ServiceImpl<EmpMapper, Emp> implements IEmpService {
+public class EmpServiceImpl extends ServiceImpl<EmpMapper, Emp> implements EmpService {
 
     private final AccountService accountService;
 
     private final EmpOrgService empOrgService;
 
-    private final IUserRoleService userRoleService;
+    private final UserRoleService userRoleService;
 
-    private final IOrgService orgService;
+    private final OrgService orgService;
 
     @Override
     public EmpDTO get(String accountId) {

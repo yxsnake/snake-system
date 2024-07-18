@@ -8,7 +8,7 @@ import com.snake.system.model.form.EmpEnableOrDisableForm;
 import com.snake.system.model.form.EmpModifyForm;
 import com.snake.system.model.queries.EmpPageEqualsQueries;
 import com.snake.system.model.queries.EmpPageFuzzyQueries;
-import com.snake.system.service.IEmpService;
+import com.snake.system.service.EmpService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class EmpController extends BaseController {
 
-    private final IEmpService empService;
+    private final EmpService empService;
 
     @Operation(summary = "登录逻辑使用-根据账号ID查询员工信息")
     @GetMapping(value = "/account")

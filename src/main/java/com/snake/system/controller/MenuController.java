@@ -4,7 +4,7 @@ import com.snake.system.model.dto.MenuTreeDTO;
 import com.snake.system.model.dto.ResourceDTO;
 import com.snake.system.model.form.MenuCreateForm;
 import com.snake.system.model.form.MenuModifyForm;
-import com.snake.system.service.IMenuService;
+import com.snake.system.service.MenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MenuController extends BaseController {
 
-    private final IMenuService menuService;
+    private final MenuService menuService;
 
     @Operation(summary = "创建菜单或按钮")
     @PostMapping(value = "/create")

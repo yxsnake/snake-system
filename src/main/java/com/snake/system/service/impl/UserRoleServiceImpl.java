@@ -9,7 +9,7 @@ import com.snake.system.mapper.RoleMapper;
 import com.snake.system.mapper.UserRoleMapper;
 import com.snake.system.model.entity.Role;
 import com.snake.system.model.entity.UserRole;
-import com.snake.system.service.IUserRoleService;
+import com.snake.system.service.UserRoleService;
 import lombok.RequiredArgsConstructor;
 import io.github.yxsnake.pisces.web.core.enums.DeletedEnum;
 import io.github.yxsnake.pisces.web.core.enums.DisabledEnum;
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
-public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> implements IUserRoleService {
+public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> implements UserRoleService {
 
     private final RoleMapper roleMapper;
 

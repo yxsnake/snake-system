@@ -10,7 +10,7 @@ import com.snake.system.model.enums.OrgFlagMainDepartmentEnum;
 import com.snake.system.model.enums.OrgOperatorTypeEnum;
 import com.snake.system.model.form.ext.EmpOrgExtForm;
 import com.snake.system.service.EmpOrgService;
-import com.snake.system.service.IOrgService;
+import com.snake.system.service.OrgService;
 import lombok.RequiredArgsConstructor;
 import io.github.yxsnake.pisces.web.core.enums.DeletedEnum;
 import io.github.yxsnake.pisces.web.core.utils.BizAssert;
@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmpOrgServiceImpl extends ServiceImpl<EmpOrgMapper, EmpOrg> implements EmpOrgService {
 
-    private final IOrgService orgService;
+    private final OrgService orgService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

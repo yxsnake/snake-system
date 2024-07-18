@@ -5,7 +5,7 @@ import com.snake.system.model.dto.RoleDTO;
 import com.snake.system.model.form.RoleCreateForm;
 import com.snake.system.model.form.RoleModifyForm;
 import com.snake.system.model.queries.RolePageEqualsQueries;
-import com.snake.system.service.IRoleService;
+import com.snake.system.service.RoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class RoleController extends BaseController {
 
-    private final IRoleService roleService;
+    private final RoleService roleService;
 
     @Operation(summary = "创建角色")
     @PostMapping(value = "/create")

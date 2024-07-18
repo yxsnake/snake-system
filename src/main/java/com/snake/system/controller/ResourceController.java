@@ -1,7 +1,7 @@
 package com.snake.system.controller;
 
 import com.snake.system.model.dto.ResourceDTO;
-import com.snake.system.service.IResourceService;
+import com.snake.system.service.ResourceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ResourceController extends BaseController {
 
-    private final IResourceService resourceService;
+    private final ResourceService resourceService;
 
     @Operation(summary = "查询资源详情")
     @GetMapping(value = "/detail")

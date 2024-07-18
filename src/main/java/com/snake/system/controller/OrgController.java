@@ -4,7 +4,7 @@ import com.snake.system.model.dto.OrgDTO;
 import com.snake.system.model.dto.OrgTreeNode;
 import com.snake.system.model.form.OrgCreateForm;
 import com.snake.system.model.form.OrgModifyForm;
-import com.snake.system.service.IOrgService;
+import com.snake.system.service.OrgService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class OrgController extends BaseController {
 
-    private final IOrgService orgService;
+    private final OrgService orgService;
 
     @Operation(summary = "新增组织机构")
     @PostMapping(value = "/create")
