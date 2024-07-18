@@ -9,7 +9,7 @@ import com.snake.system.model.entity.Account;
 import com.snake.system.model.entity.Emp;
 import com.snake.system.model.enums.*;
 import com.snake.system.model.queries.DefaultTenantAccountEqualsQueries;
-import com.snake.system.service.IAccountService;
+import com.snake.system.service.AccountService;
 import com.snake.system.util.PasswordUtil;
 import io.github.yxsnake.pisces.mybatis.plus.context.TenantIgnoreContext;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
-public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements IAccountService {
+public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
 
     @Value("${aes.key:RW0S6YkTQ4WFzXpbbhkBDg==}")
     private String aesKey;

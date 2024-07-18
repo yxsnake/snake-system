@@ -3,7 +3,7 @@ package com.snake.system.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.snake.system.mapper.RoleResourceMapper;
 import com.snake.system.model.entity.RoleResource;
-import com.snake.system.service.IRoleResourceService;
+import com.snake.system.service.RoleResourceService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-06-25
  */
 @Service
-public class RoleResourceServiceImpl extends ServiceImpl<RoleResourceMapper, RoleResource> implements IRoleResourceService {
+public class RoleResourceServiceImpl extends ServiceImpl<RoleResourceMapper, RoleResource> implements RoleResourceService {
 
 }

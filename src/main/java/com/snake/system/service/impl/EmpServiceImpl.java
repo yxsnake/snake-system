@@ -50,9 +50,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmpServiceImpl extends ServiceImpl<EmpMapper, Emp> implements IEmpService {
 
-    private final IAccountService accountService;
+    private final AccountService accountService;
 
-    private final IEmpOrgService empOrgService;
+    private final EmpOrgService empOrgService;
 
     private final IUserRoleService userRoleService;
 

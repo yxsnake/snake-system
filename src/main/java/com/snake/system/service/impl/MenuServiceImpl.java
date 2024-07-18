@@ -10,8 +10,8 @@ import com.snake.system.model.entity.Resource;
 import com.snake.system.model.enums.ResourceTypeEnum;
 import com.snake.system.model.form.MenuCreateForm;
 import com.snake.system.model.form.MenuModifyForm;
-import com.snake.system.service.IMenuService;
-import com.snake.system.service.IResourceService;
+import com.snake.system.service.MenuService;
+import com.snake.system.service.ResourceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.github.yxsnake.pisces.web.core.context.UserContext;
@@ -37,9 +37,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class MenuServiceImpl implements IMenuService {
+public class MenuServiceImpl implements MenuService {
 
-    private final IResourceService resourceService;
+    private final ResourceService resourceService;
 
 
     @Override

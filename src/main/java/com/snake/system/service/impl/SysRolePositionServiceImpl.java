@@ -3,7 +3,7 @@ package com.snake.system.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.snake.system.mapper.SysRolePositionMapper;
 import com.snake.system.model.entity.SysRolePosition;
-import com.snake.system.service.ISysRolePositionService;
+import com.snake.system.service.SysRolePositionService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-06-25
  */
 @Service
-public class SysRolePositionServiceImpl extends ServiceImpl<SysRolePositionMapper, SysRolePosition> implements ISysRolePositionService {
+public class SysRolePositionServiceImpl extends ServiceImpl<SysRolePositionMapper, SysRolePosition> implements SysRolePositionService {
 
 }

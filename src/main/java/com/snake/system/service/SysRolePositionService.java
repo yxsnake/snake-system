@@ -11,6 +11,6 @@ import com.snake.system.model.entity.SysRolePosition;
  * @author snake
  * @since 2024-06-25
  */
-public interface ISysRolePositionService extends IService<SysRolePosition> {
+public interface SysRolePositionService extends IService<SysRolePosition> {
 
 }

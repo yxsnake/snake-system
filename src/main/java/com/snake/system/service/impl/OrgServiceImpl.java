@@ -15,7 +15,7 @@ import com.snake.system.model.entity.Org;
 import com.snake.system.model.enums.OrgTypeEnum;
 import com.snake.system.model.form.OrgCreateForm;
 import com.snake.system.model.form.OrgModifyForm;
-import com.snake.system.service.IOrgService;
+import com.snake.system.service.OrgService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.github.yxsnake.pisces.web.core.constant.StringPool;
@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class OrgServiceImpl extends ServiceImpl<OrgMapper, Org> implements IOrgService {
+public class OrgServiceImpl extends ServiceImpl<OrgMapper, Org> implements OrgService {
 
     private final EmpMapper empMapper;
 

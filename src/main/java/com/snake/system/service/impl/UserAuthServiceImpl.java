@@ -28,15 +28,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserAuthServiceImpl implements UserAuthService {
 
-    private final IAccountService accountService;
+    private final AccountService accountService;
 
-    private final IRoleResourceService roleResourceService;
+    private final RoleResourceService roleResourceService;
 
-    private final IUserRoleService userRoleService;
+    private final UserRoleService userRoleService;
 
-    private final IResourceService resourceService;
+    private final ResourceService resourceService;
 
-    private final IRoleService roleService;
+    private final RoleService roleService;
 
     @Override
     public List<String> getPermissions(SsoPermissionQueries queries) {

@@ -1,16 +1,16 @@
 package com.snake.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.snake.system.model.entity.Member;
+import com.snake.system.model.entity.Position;
 
 /**
  * <p>
- * 会员表 服务类
+ * 职位表 服务类
  * </p>
  *
  * @author snake
  * @since 2024-06-25
  */
-public interface IMemberService extends IService<Member> {
+public interface PositionService extends IService<Position> {
 
 }

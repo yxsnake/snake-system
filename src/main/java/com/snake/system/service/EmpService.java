@@ -20,7 +20,7 @@ import io.github.yxsnake.pisces.web.core.base.QueryFilter;
  * @author snake
  * @since 2024-06-25
  */
-public interface IEmpService extends IService<Emp> {
+public interface EmpService extends IService<Emp> {
     /**
      * 根据账号 ID 查询员工信息
      * @param accountId

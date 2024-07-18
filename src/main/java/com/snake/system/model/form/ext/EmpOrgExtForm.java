@@ -2,6 +2,7 @@ package com.snake.system.model.form.ext;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import io.github.yxsnake.pisces.web.core.converter.Convert;
 import io.github.yxsnake.pisces.web.core.utils.BizAssert;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -17,7 +18,7 @@ import java.util.Objects;
  */
 @Data
 @Schema(name = "员工组织扩展表单对象")
-public class EmpOrgExtForm {
+public class EmpOrgExtForm implements Convert {
 
     @Schema(name = "组织 ID")
     private String orgId;

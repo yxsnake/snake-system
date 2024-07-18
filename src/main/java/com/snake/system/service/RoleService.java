@@ -18,7 +18,7 @@ import io.github.yxsnake.pisces.web.core.framework.model.BaseFuzzyQueries;
  * @author snake
  * @since 2024-06-25
  */
-public interface IRoleService extends IService<Role> {
+public interface RoleService extends IService<Role> {
     /**
      * 创建角色
      * @param form

@@ -14,7 +14,7 @@ import com.snake.system.model.queries.DefaultTenantAccountEqualsQueries;
  * @author snake
  * @since 2024-06-25
  */
-public interface IAccountService extends IService<Account> {
+public interface AccountService extends IService<Account> {
 
     /**
      * 基于账号、密码、渠道查询默认租户账号

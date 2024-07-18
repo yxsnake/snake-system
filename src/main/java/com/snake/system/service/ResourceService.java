@@ -14,7 +14,7 @@ import java.util.List;
  * @author snake
  * @since 2024-06-25
  */
-public interface IResourceService extends IService<Resource> {
+public interface ResourceService extends IService<Resource> {
     ResourceDTO detail(String resourceId);
 
     List<Resource> queryCurrentUserMenuList(String userId);

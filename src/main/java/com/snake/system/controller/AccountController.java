@@ -2,7 +2,7 @@ package com.snake.system.controller;
 
 import com.snake.system.model.dto.AccountDTO;
 import com.snake.system.model.queries.DefaultTenantAccountEqualsQueries;
-import com.snake.system.service.IAccountService;
+import com.snake.system.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AccountController extends BaseController {
 
-    private final IAccountService accountService;
+    private final AccountService accountService;
 
     @Operation(summary = "查询默认租户账号信息")
     @PostMapping(value = "/findDefaultTenantAccount")

@@ -9,7 +9,7 @@ import com.snake.system.model.entity.Org;
 import com.snake.system.model.enums.OrgFlagMainDepartmentEnum;
 import com.snake.system.model.enums.OrgOperatorTypeEnum;
 import com.snake.system.model.form.ext.EmpOrgExtForm;
-import com.snake.system.service.IEmpOrgService;
+import com.snake.system.service.EmpOrgService;
 import com.snake.system.service.IOrgService;
 import lombok.RequiredArgsConstructor;
 import io.github.yxsnake.pisces.web.core.enums.DeletedEnum;
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
-public class EmpOrgServiceImpl extends ServiceImpl<EmpOrgMapper, EmpOrg> implements IEmpOrgService {
+public class EmpOrgServiceImpl extends ServiceImpl<EmpOrgMapper, EmpOrg> implements EmpOrgService {
 
     private final IOrgService orgService;
 

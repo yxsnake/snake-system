@@ -11,7 +11,7 @@ import com.snake.system.model.form.MenuModifyForm;
  * @description: 菜单
  * @version: 1.0
  */
-public interface IMenuService {
+public interface MenuService {
 
     ResourceDTO createMenuOrButton(MenuCreateForm form);
 

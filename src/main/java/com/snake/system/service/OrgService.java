@@ -15,7 +15,7 @@ import com.snake.system.model.form.OrgModifyForm;
  * @author snake
  * @since 2024-06-25
  */
-public interface IOrgService extends IService<Org> {
+public interface OrgService extends IService<Org> {
 
     /**
      * 创建组织机构

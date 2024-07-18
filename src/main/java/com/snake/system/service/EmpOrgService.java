@@ -15,11 +15,13 @@ import java.util.List;
  * @author snake
  * @since 2024-06-25
  */
-public interface IEmpOrgService extends IService<EmpOrg> {
+public interface EmpOrgService extends IService<EmpOrg> {
 
     /**
      * 员工绑定组织机构
-     * @param orgIds
+     * @param empId
+     * @param forms
+     * @param orgOperatorTypeEnum
      */
     void bingEmpOrg(String empId,List<EmpOrgExtForm> forms, OrgOperatorTypeEnum orgOperatorTypeEnum);
 }

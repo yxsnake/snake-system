@@ -12,7 +12,7 @@ import com.snake.system.model.form.ApiCreateForm;
 import com.snake.system.model.form.ApiModifyForm;
 import com.snake.system.model.queries.ApiResourcePageEqualsQueries;
 import com.snake.system.service.ApiResourceService;
-import com.snake.system.service.IResourceService;
+import com.snake.system.service.ResourceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.github.yxsnake.pisces.web.core.base.BaseFuzzyQueries;
@@ -36,7 +36,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class ApiResourceServiceImpl implements ApiResourceService {
 
-    private final IResourceService resourceService;
+    private final ResourceService resourceService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

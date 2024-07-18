@@ -13,7 +13,7 @@ import java.util.List;
  * @author snake
  * @since 2024-06-25
  */
-public interface IUserRoleService extends IService<UserRole> {
+public interface UserRoleService extends IService<UserRole> {
     /**
      * 员工绑定角色
      * @param roleIds

@@ -14,9 +14,9 @@ import com.snake.system.model.entity.UserRole;
 import com.snake.system.model.form.RoleCreateForm;
 import com.snake.system.model.form.RoleModifyForm;
 import com.snake.system.model.queries.RolePageEqualsQueries;
-import com.snake.system.service.IRoleResourceService;
-import com.snake.system.service.IRoleService;
-import com.snake.system.service.IUserRoleService;
+import com.snake.system.service.RoleResourceService;
+import com.snake.system.service.RoleService;
+import com.snake.system.service.UserRoleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.github.yxsnake.pisces.web.core.base.QueryFilter;
@@ -41,11 +41,11 @@ import java.util.Objects;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
-    private final IUserRoleService userRoleService;
+    private final UserRoleService userRoleService;
 
-    private final IRoleResourceService roleResourceService;
+    private final RoleResourceService roleResourceService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.snake.system.mapper.ResourceMapper;
 import com.snake.system.model.dto.ResourceDTO;
 import com.snake.system.model.entity.Resource;
-import com.snake.system.service.IResourceService;
+import com.snake.system.service.ResourceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import io.github.yxsnake.pisces.web.core.enums.DeletedEnum;
@@ -24,7 +24,7 @@ import java.util.Objects;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> implements IResourceService {
+public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> implements ResourceService {
 
     @Override
     public ResourceDTO detail(String resourceId) {
