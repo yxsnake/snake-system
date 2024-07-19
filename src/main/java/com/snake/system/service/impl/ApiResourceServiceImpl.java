@@ -12,7 +12,6 @@ import com.snake.system.model.enums.ResourceTypeEnum;
 import com.snake.system.model.form.ApiCreateForm;
 import com.snake.system.model.form.ApiModifyForm;
 import com.snake.system.model.form.ext.InitTenantApiResourceForm;
-import com.snake.system.model.form.ext.InitTenantMenuForm;
 import com.snake.system.model.queries.ApiResourcePageEqualsQueries;
 import com.snake.system.service.ApiResourceService;
 import com.snake.system.service.ResourceService;
@@ -111,6 +110,5 @@ public class ApiResourceServiceImpl implements ApiResourceService {
 
         }
         return resources;
-    }
     }
 }
