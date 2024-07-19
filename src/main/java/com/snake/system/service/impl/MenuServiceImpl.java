@@ -172,7 +172,11 @@ public class MenuServiceImpl implements MenuService {
                     .filter(item -> item.getPResourceId().equals(platformResourceId))
                     .collect(Collectors.toList()).stream()
                     .findFirst().orElse(null);
-            resource.setParentId(parentResource.getParentId());
+            if(Objects.isNull(parentResource)){
+                resource.setParentId(Resource.ROOT);
+            }else{
+                resource.setParentId(parentResource.getParentId());
+            }
             resource.setPerm(initTenantMenuForm.getPerm());
             resource.setRedirect(initTenantMenuForm.getRedirect());
             resource.setResourceType(initTenantMenuForm.getResourceType());

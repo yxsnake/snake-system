@@ -11,7 +11,7 @@
  Target Server Version : 50744
  File Encoding         : 65001
 
- Date: 15/07/2024 11:12:02
+ Date: 19/07/2024 18:42:06
 */
 
 SET NAMES utf8mb4;
@@ -199,7 +199,7 @@ COMMIT;
 DROP TABLE IF EXISTS `resource`;
 CREATE TABLE `resource` (
   `resource_id` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '资源ID',
-  `p_resource_id` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '平台资源ID',
+  `p_resource_id` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '平台资源ID',
   `parent_id` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上级资源 ID',
   `resource_type` smallint(3) DEFAULT NULL COMMENT '资源类型(0:目录,1:菜单, 2:按钮 ,3:外链,4:接口)',
   `name` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '资源名称',
@@ -209,7 +209,7 @@ CREATE TABLE `resource` (
   `redirect` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '跳转路径',
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '菜单图标',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
-  `sort` int(10) DEFAULT NULL COMMENT '排序',
+  `sort` bigint(20) DEFAULT NULL COMMENT '排序',
   `disabled` smallint(3) DEFAULT NULL COMMENT '是否禁用（0-否，1-是）',
   `deleted` smallint(3) DEFAULT NULL COMMENT '是否删除（0-否，1-是）',
   `level` smallint(3) DEFAULT NULL COMMENT '层级（0～5， 最多支持 5 层）',
@@ -220,11 +220,7 @@ CREATE TABLE `resource` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `update_user_id` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人ID',
   `update_user_name` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人名称',
-  PRIMARY KEY (`resource_id`),
-  UNIQUE KEY `uq_perm` (`perm`) USING BTREE,
-  UNIQUE KEY `uq_component` (`component`) USING BTREE,
-  UNIQUE KEY `uq_path` (`path`) USING BTREE,
-  UNIQUE KEY `uq_name` (`name`) USING BTREE
+  PRIMARY KEY (`resource_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='资源表';
 
 -- ----------------------------
@@ -232,6 +228,11 @@ CREATE TABLE `resource` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `resource` VALUES ('1', '1', NULL, 4, '组织机构-创建', '/snake-system-api/org/create', NULL, 'org:create', NULL, NULL, NULL, NULL, 0, 0, NULL, '999999', '2024-06-26 13:06:44', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `resource` VALUES ('1813054611297173505', NULL, '0', 1, '系统管理', '/system', '/SystemManage', NULL, NULL, 'el-icon-user-solid', NULL, 1721100878919, 0, 0, 1, '999999', '2024-07-16 11:34:39', '1', '蓝东科技管理员', NULL, NULL, NULL);
+INSERT INTO `resource` VALUES ('1813055258323107842', NULL, '1813054611297173505', 1, '组织管理', '/org', '/OrgManage', NULL, NULL, 'el-icon-user-solid', NULL, 1721101055022, 0, 0, 2, '999999', '2024-07-16 11:37:36', '1', '蓝东科技管理员', NULL, NULL, NULL);
+INSERT INTO `resource` VALUES ('1813055466545135618', NULL, '1813054611297173505', 1, '角色管理', '/role', '/RoleManage', NULL, NULL, 'el-icon-user-solid', NULL, 1721101082833, 0, 0, 2, '999999', '2024-07-16 11:38:03', '1', '蓝东科技管理员', NULL, NULL, NULL);
+INSERT INTO `resource` VALUES ('1813055539324698626', NULL, '1813054611297173505', 1, '菜单管理', '/menu', '/MenuManage', NULL, NULL, 'el-icon-user-solid', NULL, 1721101100184, 0, 0, 2, '999999', '2024-07-16 11:38:20', '1', '蓝东科技管理员', NULL, NULL, NULL);
+INSERT INTO `resource` VALUES ('1813055608576851970', NULL, '1813054611297173505', 1, '员工管理', '/emp', '/EmpManage', NULL, NULL, 'el-icon-user-solid', NULL, 1721101116693, 0, 0, 2, '999999', '2024-07-16 11:38:37', '1', '蓝东科技管理员', NULL, NULL, NULL);
 INSERT INTO `resource` VALUES ('2', '2', NULL, 4, '组织机构-编辑', '/snake-system-api/org/modify', NULL, 'org:modify', NULL, NULL, NULL, NULL, 0, 0, NULL, '999999', '2024-06-26 13:08:44', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `resource` VALUES ('3', '3', NULL, 4, '角色管理-创建', '/snake-system-api/role/create', NULL, 'role:create', NULL, NULL, NULL, NULL, 0, 0, NULL, '999999', '2024-06-27 08:45:15', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `resource` VALUES ('4', '4', NULL, 4, '组织管理-组织树查询', '/snake-system-api/org/queryOrgTree', NULL, 'org:tree:query', NULL, NULL, NULL, NULL, 0, 0, NULL, '999999', '2024-07-02 09:31:57', NULL, NULL, NULL, NULL, NULL);

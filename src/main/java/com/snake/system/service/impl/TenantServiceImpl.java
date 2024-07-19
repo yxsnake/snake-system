@@ -14,6 +14,7 @@ import com.snake.system.model.form.TenantModifyForm;
 import com.snake.system.model.form.TenantStopAndRepeatForm;
 import com.snake.system.model.form.ext.InitTenantInfoForm;
 import com.snake.system.service.*;
+import io.github.yxsnake.pisces.mybatis.plus.context.TenantIgnoreContext;
 import io.github.yxsnake.pisces.web.core.utils.BizAssert;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -56,10 +57,14 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
         this.getBaseMapper().insert(tenant);
         // 构建组织机构
         Org org = orgService.initTenantBuildOrg(tenant);
+        TenantIgnoreContext.set();
         orgService.save(org);
         // 构建角色基础信息
         List<Role> roles = roleService.initTenantBuildRoles(tenantId,initTenantForm.getRoleFormList());
-        roleService.saveBatch(roles);
+        if(CollUtil.isNotEmpty(roles)){
+            TenantIgnoreContext.set();
+            roleService.saveBatch(roles);
+        }
         List<Resource> resources = Lists.newArrayList();
         // 构建菜单基础信息
         List<Resource> menus = menuService.initTenantBuildMenus(tenantId,initTenantForm.getMenuFormList());
@@ -72,6 +77,7 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
             resources.addAll(apiResources);
         }
         if(CollUtil.isNotEmpty(resources)){
+            TenantIgnoreContext.set();
             resourceService.saveBatch(resources);
         }
         // 创建账号
@@ -99,11 +105,13 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
     }
 
     private void checkTenantIdExist(String tenantId){
+        TenantIgnoreContext.set();
         Tenant tenant = this.getBaseMapper().selectById(tenantId);
         BizAssert.isTrue("租户已存在", Objects.nonNull(tenant));
     }
 
     private void checkTenantNameExist(String tenantName){
+        TenantIgnoreContext.set();
         int size = this.lambdaQuery().eq(Tenant::getTenantName, tenantName).list().size();
         BizAssert.isTrue("租户名称已存在",size>0);
     }

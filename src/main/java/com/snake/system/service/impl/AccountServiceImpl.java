@@ -109,6 +109,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         account.setSupperAdmin(AccountSupperAdminEnum.SUPPER.getValue());
         String tenantId = UserContext.getTenantId();
         account.setTenantId(tenantId);
+        TenantIgnoreContext.set();
         this.getBaseMapper().insert(account);
     }
 }
