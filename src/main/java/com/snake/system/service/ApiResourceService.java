@@ -2,11 +2,15 @@ package com.snake.system.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.snake.system.model.dto.ResourceDTO;
+import com.snake.system.model.entity.Resource;
 import com.snake.system.model.form.ApiCreateForm;
 import com.snake.system.model.form.ApiModifyForm;
+import com.snake.system.model.form.ext.InitTenantApiResourceForm;
 import com.snake.system.model.queries.ApiResourcePageEqualsQueries;
 import io.github.yxsnake.pisces.web.core.base.BaseFuzzyQueries;
 import io.github.yxsnake.pisces.web.core.base.QueryFilter;
+
+import java.util.List;
 
 /**
  * @author: snake
@@ -20,4 +24,6 @@ public interface ApiResourceService {
     ResourceDTO modifyApi(ApiModifyForm form);
 
     IPage<ResourceDTO> pageList(QueryFilter<ApiResourcePageEqualsQueries, BaseFuzzyQueries> queryFilter);
+
+    List<Resource> initTenantBuildApiResource(String tenantId, List<InitTenantApiResourceForm> apiResourceFormList);
 }

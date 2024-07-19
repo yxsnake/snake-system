@@ -4,12 +4,14 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
+import com.google.common.collect.Lists;
 import com.snake.system.model.dto.MenuTreeDTO;
 import com.snake.system.model.dto.ResourceDTO;
 import com.snake.system.model.entity.Resource;
 import com.snake.system.model.enums.ResourceTypeEnum;
 import com.snake.system.model.form.MenuCreateForm;
 import com.snake.system.model.form.MenuModifyForm;
+import com.snake.system.model.form.ext.InitTenantMenuForm;
 import com.snake.system.service.MenuService;
 import com.snake.system.service.ResourceService;
 import lombok.RequiredArgsConstructor;
@@ -147,6 +149,39 @@ public class MenuServiceImpl implements MenuService {
         List<MenuTreeDTO> treeNodes = streamToTree(nodes, Resource.ROOT);
         MenuTreeDTO tree = treeNodes.stream().findFirst().orElse(null);
         return tree;
+    }
+
+    @Override
+    public List<Resource> initTenantBuildMenus(String tenantId, List<InitTenantMenuForm> menuFormList) {
+        List<Resource> resources = Lists.newArrayList();
+        for (InitTenantMenuForm initTenantMenuForm : menuFormList) {
+            Resource resource = new Resource();
+            String resourceId = IdWorker.getIdStr();
+            String platformResourceId = initTenantMenuForm.getPlatformMenuId();
+            resource.setPResourceId(platformResourceId);
+            resource.setResourceId(resourceId);
+            resource.setTenantId(tenantId);
+            resource.setName(initTenantMenuForm.getName());
+            resource.setIcon(initTenantMenuForm.getIcon());
+            resource.setComponent(initTenantMenuForm.getComponent());
+            resource.setPath(initTenantMenuForm.getPath());
+            resource.setLevel(initTenantMenuForm.getLevel());
+            resource.setSort(initTenantMenuForm.getSort());
+
+            Resource parentResource = resources.stream()
+                    .filter(item -> item.getPResourceId().equals(platformResourceId))
+                    .collect(Collectors.toList()).stream()
+                    .findFirst().orElse(null);
+            resource.setParentId(parentResource.getParentId());
+            resource.setPerm(initTenantMenuForm.getPerm());
+            resource.setRedirect(initTenantMenuForm.getRedirect());
+            resource.setResourceType(initTenantMenuForm.getResourceType());
+            resource.setDeleted(DeletedEnum.NORMAL.getValue());
+            resource.setDisabled(DisabledEnum.NORMAL.getValue());
+            resources.add(resource);
+
+        }
+        return resources;
     }
 
     private List<MenuTreeDTO> streamToTree(List<MenuTreeDTO> treeList,String parentId){

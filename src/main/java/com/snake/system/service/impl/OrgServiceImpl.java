@@ -1,5 +1,6 @@
 package com.snake.system.service.impl;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -12,6 +13,7 @@ import com.snake.system.model.dto.OrgTreeNode;
 import com.snake.system.model.entity.Emp;
 import com.snake.system.model.entity.EmpOrg;
 import com.snake.system.model.entity.Org;
+import com.snake.system.model.entity.Tenant;
 import com.snake.system.model.enums.OrgTypeEnum;
 import com.snake.system.model.form.OrgCreateForm;
 import com.snake.system.model.form.OrgModifyForm;
@@ -165,6 +167,23 @@ public class OrgServiceImpl extends ServiceImpl<OrgMapper, Org> implements OrgSe
         List<OrgTreeNode> treeNodes = streamToTree(nodes, root.getParentId());
         OrgTreeNode tree = treeNodes.stream().findFirst().orElse(null);
         return tree;
+    }
+
+    @Override
+    public Org initTenantBuildOrg(Tenant tenant) {
+        Org org = new Org();
+        org.setOrgId(IdWorker.getIdStr());
+        org.setOrgName(tenant.getTenantName());
+        org.setTenantId(tenant.getTenantId());
+        org.setContactPhone(tenant.getPhone());
+        org.setParentId(Org.ORG_ROOT);
+        org.setOrgPathIds(com.baomidou.mybatisplus.core.toolkit.StringPool.PIPE+org.getOrgId());
+        org.setOrgPathNames(org.getOrgName());
+        org.setCreateTime(DateUtil.date());
+        org.setDeleted(DeletedEnum.NORMAL.getValue());
+        org.setOrgType(OrgTypeEnum.COMPANY.getValue());
+        org.setOrgOrder(1);
+        return org;
     }
 
     private List<OrgTreeNode> streamToTree(List<OrgTreeNode> treeList,String parentId){

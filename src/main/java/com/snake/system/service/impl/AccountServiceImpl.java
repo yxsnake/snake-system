@@ -7,6 +7,7 @@ import com.snake.system.mapper.AccountMapper;
 import com.snake.system.model.dto.AccountDTO;
 import com.snake.system.model.entity.Account;
 import com.snake.system.model.entity.Emp;
+import com.snake.system.model.entity.Tenant;
 import com.snake.system.model.enums.*;
 import com.snake.system.model.queries.DefaultTenantAccountEqualsQueries;
 import com.snake.system.service.AccountService;
@@ -91,5 +92,23 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
             return null;
         }
         return account.convert(AccountDTO.class);
+    }
+
+    @Override
+    public void initTenantCreateAccount(Tenant tenant) {
+        Account account = new Account();
+        String accountId = IdWorker.getIdStr();
+        account.setUserId(tenant.getTenantId());
+        account.setAccountId(accountId);
+        account.setAccount(tenant.getSupperAccount());
+        account.setChannel(AccountChannelEnum.EMP.getValue());
+        account.setDisabled(AccountStatusEnum.NORMAL.getValue());
+        account.setDefaultTenantFlag(AccountDefaultTenantEnum.YES.getValue());
+        account.setLoginWay(AccountLoginWayEnum.PWD.getValue());
+        account.setPassword(PasswordUtil.getEncryptPwd(aesKey,tenant.getSupperPassword()));
+        account.setSupperAdmin(AccountSupperAdminEnum.SUPPER.getValue());
+        String tenantId = UserContext.getTenantId();
+        account.setTenantId(tenantId);
+        this.getBaseMapper().insert(account);
     }
 }

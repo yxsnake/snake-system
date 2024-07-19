@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.snake.system.model.dto.AccountDTO;
 import com.snake.system.model.entity.Account;
 import com.snake.system.model.entity.Emp;
+import com.snake.system.model.entity.Tenant;
 import com.snake.system.model.queries.DefaultTenantAccountEqualsQueries;
 
 /**
@@ -35,4 +36,10 @@ public interface AccountService extends IService<Account> {
      * @return
      */
     AccountDTO findByAccountId(String accountId);
+
+    /**
+     * 初始化租户创建超管账号
+     * @param tenant
+     */
+    void initTenantCreateAccount(Tenant tenant);
 }

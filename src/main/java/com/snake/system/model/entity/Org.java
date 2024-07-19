@@ -27,6 +27,7 @@ public class Org extends BaseEntity implements Convert,Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public static final String ORG_ROOT = "0";
     /**
      * 组织ID
      */

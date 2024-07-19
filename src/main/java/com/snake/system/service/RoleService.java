@@ -6,9 +6,12 @@ import com.snake.system.model.dto.RoleDTO;
 import com.snake.system.model.entity.Role;
 import com.snake.system.model.form.RoleCreateForm;
 import com.snake.system.model.form.RoleModifyForm;
+import com.snake.system.model.form.ext.InitTenantRoleInfoForm;
 import com.snake.system.model.queries.RolePageEqualsQueries;
 import io.github.yxsnake.pisces.web.core.base.QueryFilter;
 import io.github.yxsnake.pisces.web.core.framework.model.BaseFuzzyQueries;
+
+import java.util.List;
 
 /**
  * <p>
@@ -52,4 +55,6 @@ public interface RoleService extends IService<Role> {
      * @param roleId
      */
     void deleteByRoleId(String roleId);
+
+    List<Role> initTenantBuildRoles(String tenantId, List<InitTenantRoleInfoForm> roleFormList);
 }

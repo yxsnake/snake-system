@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.snake.system.model.dto.OrgDTO;
 import com.snake.system.model.dto.OrgTreeNode;
 import com.snake.system.model.entity.Org;
+import com.snake.system.model.entity.Tenant;
 import com.snake.system.model.form.OrgCreateForm;
 import com.snake.system.model.form.OrgModifyForm;
 
@@ -50,4 +51,11 @@ public interface OrgService extends IService<Org> {
      * @return
      */
     OrgTreeNode queryOrgTree(String orgId);
+
+    /**
+     * 租户初始化 构建组织机构根节点
+     * @param tenant
+     * @return
+     */
+    Org initTenantBuildOrg(Tenant tenant);
 }

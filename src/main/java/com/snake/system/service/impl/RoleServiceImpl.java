@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
 import com.snake.system.mapper.RoleMapper;
 import com.snake.system.model.dto.RoleDTO;
 import com.snake.system.model.entity.Role;
@@ -13,6 +14,7 @@ import com.snake.system.model.entity.RoleResource;
 import com.snake.system.model.entity.UserRole;
 import com.snake.system.model.form.RoleCreateForm;
 import com.snake.system.model.form.RoleModifyForm;
+import com.snake.system.model.form.ext.InitTenantRoleInfoForm;
 import com.snake.system.model.queries.RolePageEqualsQueries;
 import com.snake.system.service.RoleResourceService;
 import com.snake.system.service.RoleService;
@@ -28,6 +30,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -114,5 +117,23 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         BizAssert.isTrue("当前删除角色已关联资源，无法直接删除，请先解除与资源关系",roleRefResourceCount>0);
         role.setDeleted(DeletedEnum.DEL.getValue());
         this.getBaseMapper().updateById(role);
+    }
+
+    @Override
+    public List<Role> initTenantBuildRoles(String tenantId, List<InitTenantRoleInfoForm> roleFormList) {
+        List<Role> roles = Lists.newArrayList();
+        for (InitTenantRoleInfoForm initTenantRoleInfoForm : roleFormList) {
+            Role role = new Role();
+            String roleId = IdWorker.getIdStr();
+            role.setTenantId(tenantId);
+            role.setRoleId(roleId);
+            role.setPRoleId(initTenantRoleInfoForm.getPlatformRoleId());
+            role.setRoleCode(initTenantRoleInfoForm.getRoleCode());
+            role.setRoleName(initTenantRoleInfoForm.getRoleName());
+            role.setRemark(initTenantRoleInfoForm.getRemark());
+            role.setDisabled(DisabledEnum.NORMAL.getValue());
+            roles.add(role);
+        }
+        return roles;
     }
 }

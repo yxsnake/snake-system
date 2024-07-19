@@ -28,6 +28,10 @@ public class InitTenantMenuForm implements Convert {
     @NotBlank(message = "路由路径不能为空")
     private String path;
 
+    @Schema(name = "层级（0～5， 最多支持 5 层）")
+    @NotBlank(message = "层级不能为空")
+    private Integer level;
+
     @Schema(name = "组件路径(vue页面完整路径，省略.vue后缀)")
     private String component;
 
@@ -37,6 +41,9 @@ public class InitTenantMenuForm implements Convert {
     @Schema(name = "菜单图标")
     @NotBlank(message = "菜单图标不能为空")
     private String icon;
+
+    @Schema(name = "跳转路径")
+    private String redirect;
 
     @Schema(name = "备注")
     private String remark;

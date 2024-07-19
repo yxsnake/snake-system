@@ -2,8 +2,12 @@ package com.snake.system.service;
 
 import com.snake.system.model.dto.MenuTreeDTO;
 import com.snake.system.model.dto.ResourceDTO;
+import com.snake.system.model.entity.Resource;
 import com.snake.system.model.form.MenuCreateForm;
 import com.snake.system.model.form.MenuModifyForm;
+import com.snake.system.model.form.ext.InitTenantMenuForm;
+
+import java.util.List;
 
 /**
  * @author: snake
@@ -20,4 +24,6 @@ public interface MenuService {
     void deleteMenuById(String menuId);
 
     MenuTreeDTO tree();
+
+    List<Resource> initTenantBuildMenus(String tenantId, List<InitTenantMenuForm> menuFormList);
 }
