@@ -107,8 +107,8 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         account.setLoginWay(AccountLoginWayEnum.PWD.getValue());
         account.setPassword(PasswordUtil.getEncryptPwd(aesKey,tenant.getSupperPassword()));
         account.setSupperAdmin(AccountSupperAdminEnum.SUPPER.getValue());
-        String tenantId = UserContext.getTenantId();
-        account.setTenantId(tenantId);
+        account.setCreateTime(tenant.getCreateTime());
+        account.setTenantId(tenant.getTenantId());
         TenantIgnoreContext.set();
         this.getBaseMapper().insert(account);
     }
