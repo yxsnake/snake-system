@@ -60,7 +60,7 @@ public class TenantController extends BaseController {
     }
 
     @Operation(summary = "查询租户信息")
-    @PostMapping(value = "/detail")
+    @GetMapping(value = "/detail")
     public ResponseEntity<Result<TenantDTO>> detail(@RequestParam("tenantId") String tenantId){
         return success(tenantService.detail(tenantId));
     }

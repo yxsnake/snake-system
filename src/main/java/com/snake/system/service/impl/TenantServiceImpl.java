@@ -107,6 +107,7 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
 
     @Override
     public TenantDTO detail(String tenantId) {
+        TenantIgnoreContext.set();
         Tenant tenant = this.getBaseMapper().selectById(tenantId);
         if(Objects.isNull(tenant)){
             return null;
