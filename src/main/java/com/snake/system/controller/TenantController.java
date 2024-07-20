@@ -1,5 +1,6 @@
 package com.snake.system.controller;
 
+import com.snake.system.model.dto.TenantDTO;
 import com.snake.system.model.form.PlatformInitTenantForm;
 import com.snake.system.model.form.RestSupperAdminPwdForm;
 import com.snake.system.model.form.TenantModifyForm;
@@ -56,6 +57,12 @@ public class TenantController extends BaseController {
     public ResponseEntity<Result<Boolean>> stopAndRepeat(@RequestParam TenantStopAndRepeatForm form){
         tenantService.stopAndRepeat(form);
         return success(Boolean.TRUE);
+    }
+
+    @Operation(summary = "查询租户信息")
+    @PostMapping(value = "/detail")
+    public ResponseEntity<Result<TenantDTO>> detail(@RequestParam("tenantId") String tenantId){
+        return success(tenantService.detail(tenantId));
     }
 
 

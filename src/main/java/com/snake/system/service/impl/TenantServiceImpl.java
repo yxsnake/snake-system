@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import com.snake.system.mapper.TenantMapper;
+import com.snake.system.model.dto.TenantDTO;
 import com.snake.system.model.entity.Org;
 import com.snake.system.model.entity.Resource;
 import com.snake.system.model.entity.Role;
@@ -102,6 +103,15 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
     @Override
     public void stopAndRepeat(TenantStopAndRepeatForm form) {
 
+    }
+
+    @Override
+    public TenantDTO detail(String tenantId) {
+        Tenant tenant = this.getBaseMapper().selectById(tenantId);
+        if(Objects.isNull(tenant)){
+            return null;
+        }
+        return tenant.convert(TenantDTO.class);
     }
 
     private void checkTenantIdExist(String tenantId){

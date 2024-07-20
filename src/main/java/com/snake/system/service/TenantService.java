@@ -1,6 +1,7 @@
 package com.snake.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.snake.system.model.dto.TenantDTO;
 import com.snake.system.model.entity.Tenant;
 import com.snake.system.model.form.PlatformInitTenantForm;
 import com.snake.system.model.form.RestSupperAdminPwdForm;
@@ -19,4 +20,6 @@ public interface TenantService extends IService<Tenant> {
     void restSupperAdminPwd(RestSupperAdminPwdForm form);
 
     void stopAndRepeat(TenantStopAndRepeatForm form);
+
+    TenantDTO detail(String tenantId);
 }
