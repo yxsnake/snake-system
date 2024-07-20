@@ -177,7 +177,7 @@ public class OrgServiceImpl extends ServiceImpl<OrgMapper, Org> implements OrgSe
         org.setTenantId(tenant.getTenantId());
         org.setContactPhone(tenant.getPhone());
         org.setParentId(Org.ORG_ROOT);
-        org.setOrgPathIds(com.baomidou.mybatisplus.core.toolkit.StringPool.PIPE+org.getOrgId());
+        org.setOrgPathIds(org.getOrgId());
         org.setOrgPathNames(org.getOrgName());
         org.setCreateTime(DateUtil.date());
         org.setDeleted(DeletedEnum.NORMAL.getValue());
