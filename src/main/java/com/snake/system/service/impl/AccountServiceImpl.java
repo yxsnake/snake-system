@@ -41,14 +41,13 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     @Override
     public AccountDTO findDefaultTenantAccount(DefaultTenantAccountEqualsQueries queries) {
         TenantIgnoreContext.set();
-        List<Account> list = this.lambdaQuery()
+        Account account = this.lambdaQuery()
                 .eq(Account::getAccount, queries.getAccount())
                 .eq(Account::getChannel, queries.getChannel())
                 .eq(Account::getDefaultTenantFlag, AccountDefaultTenantEnum.YES.getValue())
                 .eq(Account::getLoginWay,AccountLoginWayEnum.PWD.getValue())
-                .list();
-        BizAssert.isNull("账号或密码不存在", CollUtil.isEmpty(list));
-        Account account = list.stream().findFirst().orElse(null);
+                .list().stream().findFirst().orElse(null);
+        BizAssert.isNull("账号或密码不存在", account);
         String dbPwd = account.getPassword();
         Boolean checkPwd = PasswordUtil.checkPwd(aesKey, dbPwd, queries.getPassword());
         BizAssert.isFalse("账号密码错误",checkPwd);
