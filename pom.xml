@@ -76,7 +76,7 @@
     </profile>
   </profiles>
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>system-system-server</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
